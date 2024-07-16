@@ -1,0 +1,19 @@
+"themeSwitcher.themesList": "Night Owl Light, Cobalt2, Night Owl",
+"themeswitcher.utcOffset": 3,
+"themeswitcher.mappings": [
+  {
+    "time": "06:00",
+    "theme": "Night Owl Light"
+  },
+  {
+    "time": "12:00",
+    "theme": "Cobalt2"
+  },
+  {
+    "time": "18:00",
+    "theme": "Night Owl"
+  }
+]
+    ]
+  }
+  
