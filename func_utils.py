@@ -6,6 +6,8 @@ import pandas as pd
 import numpy as np
 import scipy.stats as stats
 import statsmodels.api as sm
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 def detect_outliers(data, column):
     # Calculate Q1 and Q3
@@ -114,7 +116,7 @@ def calculate_lagged_correlation(df, target_column, columns, max_lag):
             results.append({'Lag': lag, 'Variable': col, 'Correlation': correlation})
     return pd.DataFrame(results)
 
-
+# Function to label the groups
 def label_rfm_graph_method(data, col_x, col_y):
     '''
     Funcao para nomear os agrupamentos gerados considerando o RFM definido pela recencia e pela media da frequencia e valor monetario
@@ -144,3 +146,98 @@ def label_rfm_graph_method(data, col_x, col_y):
             return "Other"
     except KeyError as e:
         return f"Column not found: {e}"
+    
+# Function to plot the graph for the kmeans
+def plot_rfm_clusters(data, recency_col, frequency_col, monetary_col, label_col):
+    # Create subplots for scatter plots
+    fig, axes = plt.subplots(1, 3, figsize=(18, 6))
+
+    # Plot 1: Recency vs. Frequency
+    sns.scatterplot(
+        x=recency_col, 
+        y=frequency_col, 
+        hue=label_col, 
+        data=data, 
+        ax=axes[0], 
+        legend='full'
+    )
+    axes[0].set_title('Recency vs. Frequency')
+    axes[0].set_xlabel('Recency (days)')
+    axes[0].set_ylabel('Frequency')
+    axes[0].legend(title='RFM Label')
+
+    # Plot 2: Recency vs. Monetary (Invoice)
+    sns.scatterplot(
+        x=recency_col, 
+        y=monetary_col, 
+        hue=label_col, 
+        data=data, 
+        ax=axes[1], 
+        legend='full'
+    )
+    axes[1].set_title('Recency vs. Monetary Value')
+    axes[1].set_xlabel('Recency (days)')
+    axes[1].set_ylabel('Monetary Value (Invoice)')
+    axes[1].legend(title='RFM Label')
+
+    # Plot 3: Frequency vs. Monetary (Invoice)
+    sns.scatterplot(
+        x=frequency_col, 
+        y=monetary_col, 
+        hue=label_col, 
+        data=data, 
+        ax=axes[2], 
+        legend='full'
+    )
+    axes[2].set_title('Frequency vs. Monetary Value')
+    axes[2].set_xlabel('Frequency')
+    axes[2].set_ylabel('Monetary Value (Invoice)')
+    axes[2].legend(title='RFM Label')
+
+    # Adjust layout for better spacing
+    plt.tight_layout()
+
+    # Show plots
+    plt.show()
+
+    # Create subplots for box plots
+    fig, axes = plt.subplots(1, 3, figsize=(18, 6))
+
+    # Boxplot 1: Recency by RFM Label
+    sns.boxplot(
+        x=label_col, 
+        y=recency_col, 
+        data=data, 
+        ax=axes[0]
+    )
+    axes[0].set_title('Recency by RFM Label')
+    axes[0].set_xlabel('RFM Label')
+    axes[0].set_ylabel('Recency (days)')
+
+    # Boxplot 2: Frequency by RFM Label
+    sns.boxplot(
+        x=label_col, 
+        y=frequency_col, 
+        data=data, 
+        ax=axes[1]
+    )
+    axes[1].set_title('Frequency by RFM Label')
+    axes[1].set_xlabel('RFM Label')
+    axes[1].set_ylabel('Frequency')
+
+    # Boxplot 3: Monetary Value by RFM Label
+    sns.boxplot(
+        x=label_col, 
+        y=monetary_col, 
+        data=data, 
+        ax=axes[2]
+    )
+    axes[2].set_title('Monetary Value by RFM Label')
+    axes[2].set_xlabel('RFM Label')
+    axes[2].set_ylabel('Monetary Value (Invoice)')
+
+    # Adjust layout for better spacing
+    plt.tight_layout()
+
+    # Show plots
+    plt.show()
