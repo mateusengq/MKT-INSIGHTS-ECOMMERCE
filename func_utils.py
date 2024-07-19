@@ -103,6 +103,9 @@ def perform_test(month, df):
 
 # Function to calculate lagged correlations
 def calculate_lagged_correlation(df, target_column, columns, max_lag):
+    '''
+    Calcular a correlacao considerando um deslocamento temporal dos dados.
+    '''
     results = []
     for col in columns:
         for lag in range(1, max_lag + 1):
@@ -110,3 +113,34 @@ def calculate_lagged_correlation(df, target_column, columns, max_lag):
             correlation = df[[target_column, f'{col}_lag{lag}']].corr().iloc[0, 1]
             results.append({'Lag': lag, 'Variable': col, 'Correlation': correlation})
     return pd.DataFrame(results)
+
+
+def label_rfm_graph_method(data, col_x, col_y):
+    '''
+    Funcao para nomear os agrupamentos gerados considerando o RFM definido pela recencia e pela media da frequencia e valor monetario
+    '''
+    try:
+        if data[col_x] <= 2 and data[col_y] <= 2:
+            return 'Hibernating'
+        elif data[col_x] <= 2 and data[col_y] <= 4:
+            return 'At Risk'
+        elif data[col_x] <= 2 and data[col_y] == 5:
+            return "Can't lose them"
+        elif data[col_x] == 3 and data[col_y] == 3:
+            return "About to sleep"
+        elif data[col_x] == 3 and data[col_y] <= 2:
+            return "Need Attention"
+        elif data[col_x] == 4 and data[col_y] == 1:
+            return "Promising"
+        elif data[col_x] == 5 and data[col_y] == 1:
+            return "New Customers"
+        elif data[col_x] <= 5 and data[col_y] <= 3:
+            return "Potential Loyalist"
+        elif data[col_x] <= 4 and data[col_y] <= 4:
+            return "Loyal Customers"
+        elif data[col_x] == 5 and data[col_y] <= 5:
+            return "Champions"
+        else:
+            return "Other"
+    except KeyError as e:
+        return f"Column not found: {e}"
