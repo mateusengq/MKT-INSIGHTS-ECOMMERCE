@@ -107,7 +107,7 @@ File: [Business_Questions_Group3](https://github.com/mateusengq/MKT-INSIGHTS-ECO
 - To answer the question "How marketing spend is impacting on revenue?", I will analyze the correlation between the market spend and the invoce. For to test it, I will compare the invoice total with the lags of the mkt investment.
 ![Correlation](https://github.com/mateusengq/MKT-INSIGHTS-ECOMMERCE/blob/main/IMAGES/question2_corr_lag.png)
 
-## Question 3
+## Question 3: Performing Customer Segmentation
 File: [Business_Questions_Group3](https://github.com/mateusengq/MKT-INSIGHTS-ECOMMERCE/blob/main/NOTEBOOK/Business_Questions_Group3.ipynb)
 - Heuristic (Value based, RFM): 
   - Each variable (Recency, Frequency, and Monetary) was divided into 5 groups based on percentiles.
@@ -116,4 +116,56 @@ Important to Note:
   - There are other methods and aggregations to calculate the final score. For example, different weights can be assigned based on the importance of each variable.
   - In the Exploratory Data Analysis (EDA) file, another method was included using the formula: Recency x (Frequency + Monetary) and concatenating the values.
 - KMeans: I will use K-Means as suggested in the question with k = 4 to compare the two ways to determine the groups.
+
+**Comparing Two Clustering Methods**
+
+The heuristic-based segmentation and KMeans clustering showed significant differences in how customers are classified into four groups. The heuristic approach, which divides groups based on percentiles, ensures that each group is of equal size, making it straightforward and easy to implement. However, this method can be less flexible and might not capture the full complexity of customer behaviors. The equal group sizes may lead to oversimplification and potentially overlook important nuances in the data.
+
+On the other hand, KMeans clustering does not guarantee equal group sizes but offers greater flexibility in capturing the underlying patterns in customer behavior. The method can adapt to the data's natural structure, resulting in more detailed and potentially more accurate customer segments. The overall accuracy of 45.23% between the two methods suggests some consistency, but the variations in group distributions highlight that KMeans clustering might identify more nuanced behaviors that the heuristic approach misses. Therefore, while the heuristic method is useful for its simplicity and equal-sized groups, KMeans clustering is often preferred for its ability to uncover deeper insights and more tailored customer segments.
+
+![Comparing the 2 methods](https://github.com/mateusengq/MKT-INSIGHTS-ECOMMERCE/blob/main/IMAGES/comparing_euristic_kmeas.png)
+
+**KMeans Results**:
+![KMeans Results - 1](https://github.com/mateusengq/MKT-INSIGHTS-ECOMMERCE/blob/main/IMAGES/question3_kmeans.png)
+![KMeans Results - 2](https://github.com/mateusengq/MKT-INSIGHTS-ECOMMERCE/blob/main/IMAGES/question3_kmeans2.png)
+
+**Strategies for Each Segment**
+1. Premium Customers:
+   - **Personalized Offers**: Provide exclusive discounts and personalized product recommendations based on their purchase history.
+   - **Exclusive Previews**: Offer early access to new products, sales, or events to make them feel valued.
+   - **Loyalty Programs**: Enhance loyalty programs with benefits like points multipliers, exclusive rewards, or tiered memberships.
+   - **Premium Services**: Offer premium services such as free expedited shipping, dedicated customer support, and easy returns.
+2. Gold Customers
+    - **Upsell and Cross-Sell**: Encourage higher-value purchases by recommending complementary products or higher-end items.
+    - **Engagement Campaigns**: Keep them engaged with regular updates, newsletters, and special promotions.
+    - **Feedback Requests**: Solicit feedback to understand their needs better and improve their experience.
+    - **Loyalty Incentives**: Provide loyalty incentives such as discounts on the next purchase or bonus points for referring friends.
+3. Silver Customers
+    - **Discounts and Promotions**: Offer time-limited discounts or bundle deals to encourage purchases.
+    - **Re-engagement Emails**: Send personalized re-engagement emails highlighting new arrivals, special offers, or upcoming sales.
+    - **Loyalty Programs**: Introduce or promote a loyalty program to encourage more frequent shopping.
+    - **Educational Content**: Share content that educates them about your products and their benefits, possibly through blog posts, videos, or tutorials.
+4. Standard Customers
+    - **Awareness Campaigns**: Use targeted social media ads and content marketing to increase brand awareness.
+    - **First Purchase Incentives**: Offer welcome discounts and free samples to encourage initial purchases.
+    - **Re-engagement Campaigns**: Send email reminders about new products, special offers, and win-back campaigns.
+    - **Educational Content**: Provide product guides, tutorials, and customer success stories to build trust.
+    - **Personalized Recommendations**: Use tailored product suggestions and customized email campaigns.
+    - **Exclusive Offers**: Create special promotions and limited-time offers to encourage immediate purchases.
+
+
+## Question 4: Predicting Customer Lifetime Value (Low Value/Medium Value/High Value)
+File: [Business_Questions_Group3](https://github.com/mateusengq/MKT-INSIGHTS-ECOMMERCE/blob/main/NOTEBOOK/Business_Questions_Group3.ipynb)
+
+To try to answer this question, I used Random Forest and Regression models, but both yielded unsatisfactory results. Moving forward, I plan to explore new models and adjust the parameters to enhance performance. Additionally, relying solely on Revenue/Invoice might not be the best approach for defining Customer Lifetime Value (CLV).
+
+## Question 5: Cross-Selling (Which products are selling together)
+- Considering a market analysis, there are 494 products that are frequently purchased together.
 - 
+
+
+
+
+# Further Steps
+- Improve the results for question 4 by testing different models and fine-tuning parameters.
+- Train a model to determine the client customer, taking into account client characteristics and their first two purchases, for example.
