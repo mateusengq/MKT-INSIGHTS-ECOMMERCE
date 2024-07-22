@@ -106,3 +106,14 @@ File: [Business_Questions_Group3](https://github.com/mateusengq/MKT-INSIGHTS-ECO
 - The analysis of the marketing spend as a proportion of invoice shows that, on average, marketing spend is 28.15 times de revenue, with a standart deviation of 2.55. The minimum and the maximum are 24.25 and 32.40, respectively.
 - To answer the question "How marketing spend is impacting on revenue?", I will analyze the correlation between the market spend and the invoce. For to test it, I will compare the invoice total with the lags of the mkt investment.
 ![Correlation](https://github.com/mateusengq/MKT-INSIGHTS-ECOMMERCE/blob/main/IMAGES/question2_corr_lag.png)
+
+## Question 3
+File: [Business_Questions_Group3](https://github.com/mateusengq/MKT-INSIGHTS-ECOMMERCE/blob/main/NOTEBOOK/Business_Questions_Group3.ipynb)
+- Heuristic (Value based, RFM): 
+  - Each variable (Recency, Frequency, and Monetary) was divided into 5 groups based on percentiles.
+  - The values from each group were summed and then divided into 4 new groups to create the final score.
+Important to Note:
+  - There are other methods and aggregations to calculate the final score. For example, different weights can be assigned based on the importance of each variable.
+  - In the Exploratory Data Analysis (EDA) file, another method was included using the formula: Recency x (Frequency + Monetary) and concatenating the values.
+- KMeans: I will use K-Means as suggested in the question with k = 4 to compare the two ways to determine the groups.
+- 
