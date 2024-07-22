@@ -5,6 +5,8 @@ In this project, I will answer some Business Questions given in a [Kaggle Datase
 
 In the competitive world of retail, understanding the clients and purchases is key. These datset help us dig into how customers shop and interact a store over the course of a year, from January, 2019, to December 31, 2019. By looking at this data, we can answer some questions that can help the business grow and keep customers happy.
 
+![Mapa mental](https://github.com/mateusengq/MKT-INSIGHTS-ECOMMERCE/blob/main/IMAGES/resumo_analises.png)
+
 ## About Dataset and Variables
 
 The data set includes several files:
@@ -160,12 +162,29 @@ File: [Business_Questions_Group3](https://github.com/mateusengq/MKT-INSIGHTS-ECO
 To try to answer this question, I used Random Forest and Regression models, but both yielded unsatisfactory results. Moving forward, I plan to explore new models and adjust the parameters to enhance performance. Additionally, relying solely on Revenue/Invoice might not be the best approach for defining Customer Lifetime Value (CLV).
 
 ## Question 5: Cross-Selling (Which products are selling together)
+**Using a Market Basket Analysis**
+"Market basket analysis is used by companies to identify items that are frequently purchased together. Notice, when you visit the grocery store, how baby formula and diapers are always sold in the same aisle. Similarly, bread, butter, and jam are all placed near each other so that customers can easily purchase them together. The technique uncovers hidden correlations that cannot be identified by the human eye by using a set of statistical rules to identify product combinations that occur frequently in transactions."
+[Fonte](https://365datascience.com/tutorials/python-tutorials/market-basket-analysis/)
+
 - Considering a market analysis, there are 494 products that are frequently purchased together.
-- 
+- The results shows that the most popular ptoduct combinations that are frequently bought together are:
+![Top 8 - Market Basket](https://github.com/mateusengq/MKT-INSIGHTS-ECOMMERCE/blob/main/IMAGES/market_basket.png)
 
 
+**Network Analysis**
+Another approach I used was analyzing the products that appeared together in each purchase through a network analysis. This method counts how many times products are bought together, providing a straightforward view of their interactions. Unlike market basket analysis, which uses statistical methods to calculate the probability of products being bought together, network analysis simply shows the frequency of these interactions without considering the overall context.
 
+In the graph, it is possible to identify some products that are frequently purchased together. This approach can be useful for identifying and proposing targeted promotions or bundle deals. By understanding which products are often bought in combination, businesses can create more effective marketing strategies and enhance the shopping experience for their customers.
+
+![Network_groups](https://github.com/mateusengq/MKT-INSIGHTS-ECOMMERCE/blob/main/IMAGES/question6_networking.png)
+- The results shows that the most popular ptoduct combinations that are frequently bought together are:
+![Table results](https://github.com/mateusengq/MKT-INSIGHTS-ECOMMERCE/blob/main/IMAGES/question6_netw_results.png)
 
 # Further Steps
 - Improve the results for question 4 by testing different models and fine-tuning parameters.
 - Train a model to determine the client customer, taking into account client characteristics and their first two purchases, for example.
+- Test new paramenters to Market Basket.
+- Refine the customer lifetime value (CLV) model by incorporating additional features such as customer behavior, engagement metrics, and socio-demographic factors. Segment customers based on their CLV to tailor retention strategies.
+- In the Market Basket analysis, create a "new product" that is the month and test if there is any product that was significantly purchased in a specific month.
+- Predicting Next Purchase Day (How soon each customer can visit the store (0-30 days, 30-60 days, 60-90 days, 90+ days)).
+- Perform cohort analysis by defining below cohorts.
