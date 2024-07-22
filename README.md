@@ -74,6 +74,35 @@ During the process, I conducted some exploratory analyses and tests that weren't
 In this README file, I have included just the main insights extracted from the analysis. The complete answers can be accessed in the files above.
 
 ## Question 1: Calculate Invoice amount or sale_amount or revenue for each transaction and item level
-$$ Invoice Value =[\frac{Quantity*Avg\_price}{(1-Dicount\_pct)}*(1+GST)]+Delivery\_Charges$$
+File: [Business_Questions_Group3](https://github.com/mateusengq/MKT-INSIGHTS-ECOMMERCE/blob/main/NOTEBOOK/Business_Questions_Group3.ipynb)
+$$Invoice Value =[\frac{Quantity*Avg\_price}{(1-Dicount\_pct)}*(1+GST)]+Delivery\_Charges$$
 
 - The total invoice amount is $6,183,896.12.
+- The top 2 products are from the Nest-USA and Apparel categories, with $3,156,170.05 and $936,162.07 respectively. However, as seen in the Sankey Graph, the Nest-USA category has many products/items (just 9 items represent the entire invoice), whereas Apparel has 211 products/items.
+Given the large number of products, the Sankey graph can be a bit confusing to read. The idea here is to show the importance of each category and product, rather than the exact impact of each.
+
+![Sankey Graph](https://github.com/mateusengq/MKT-INSIGHTS-ECOMMERCE/blob/main/IMAGES/Sankey_Graph.png)
+
+
+## Question 2: Perform Detailed exploratory analysis
+File: [Business_Questions_Group3](https://github.com/mateusengq/MKT-INSIGHTS-ECOMMERCE/blob/main/NOTEBOOK/Business_Questions_Group3.ipynb)
+- The highest number of distinct clients is in July (300), while the lowest is in February (109).
+- There is an increasing trend in transactions from January to December, with a notable peak in December (2684 transactions).
+- The lowest number of transactions occurs in February (1664 transactions).
+- This indicates that while February has fewer clients, those clients make more transactions on average.
+- Clients who made their first purchase in the first half of the year (months 1 to 6) tend to have a lower re-purchase rate in the following months compared to those who started purchasing later in the year. This can be observed from the retention rates, where the percentages decrease more quickly for clients acquired earlier in the year.
+- There is a noticeable peak in client retention rates from October to December. This increase is likely due to promotions, discounts, and special events during these months, which encourage clients to return and make additional purchases.
+![Customer Retention Rate](https://github.com/mateusengq/MKT-INSIGHTS-ECOMMERCE/blob/main/IMAGES/question2_retention_rate.png)
+- Analysing the proportion of Invoice(News) comparing with the Invoice(Existent), the graph shows that the proportion tends to be half to half.
+- There is a statistically significant difference between the news and the existing customers.
+![Customer Type x Invoice](https://github.com/mateusengq/MKT-INSIGHTS-ECOMMERCE/blob/main/IMAGES/question2_new_existing_clients.png)
+- There are significant differences between invoices with discounts and those without discounts, including for each month.
+- There are 20 product categories. **Nest-USA** and **Nest** categories show notable peaks towards the end of the year, particularly around November and December. This indicates a significant increase in purchases, likely due to holiday sales and promotions.
+- Categories such as Nest-USA, Nest, and Gift Cards show clear seasonal peaks, likely due to holiday shopping and promotions.
+- Categories like Apparel, Office, and Bags maintain stable sales throughout the year, indicating a steady demand.
+- For categories with low and stable sales, exploring new marketing strategies or bundling with more popular items could help boost sales.
+![Trends](https://github.com/mateusengq/MKT-INSIGHTS-ECOMMERCE/blob/main/IMAGES/question2_trends.png)
+- There are 5 locations. Chicago represents 35% of purchases. The top 3 represents more than 85% of the sales.
+- The analysis of the marketing spend as a proportion of invoice shows that, on average, marketing spend is 28.15 times de revenue, with a standart deviation of 2.55. The minimum and the maximum are 24.25 and 32.40, respectively.
+- To answer the question "How marketing spend is impacting on revenue?", I will analyze the correlation between the market spend and the invoce. For to test it, I will compare the invoice total with the lags of the mkt investment.
+![Correlation](https://github.com/mateusengq/MKT-INSIGHTS-ECOMMERCE/blob/main/IMAGES/question2_corr_lag.png)
